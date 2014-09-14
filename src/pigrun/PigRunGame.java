@@ -15,6 +15,7 @@ public class PigRunGame extends BasicGame {
 	public static final float Background_VX = -5;
 	
 	private Background background;
+	private Pig pig;
 
 	public PigRunGame(String title) {
 		super(title);
@@ -24,13 +25,13 @@ public class PigRunGame extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		background.render();
-		
+		pig.render();
 	}
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
 		background = new Background(-Game_Width/8,0,Background_VX);
-		
+		pig = new Pig(Game_Width/4,Game_Height - Game_Height/2+65);
 	}
 
 	@Override

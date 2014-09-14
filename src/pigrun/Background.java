@@ -6,7 +6,7 @@ import org.newdawn.slick.SlickException;
 public class Background {
 	  
 	  
-	  private Image image;
+	  private Image background;
 	  private float x;
 	  private float y;
 	  private float vx;
@@ -18,12 +18,12 @@ public class Background {
 		this.x = x;
 		this.y = y;
 		this.vx = vx;
-		image = new Image("res/background.png");
+		background = new Image("res/background.png");
 				
 	}
 
 	public void render() {
-		image.draw(x,y);
+		background.draw(x,y);
 	}
 	public void update() {
 	    updatemovement();
