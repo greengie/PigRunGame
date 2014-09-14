@@ -10,8 +10,10 @@ import org.newdawn.slick.SlickException;
 
 public class PigRunGame extends BasicGame {
 
-	private static final int Game_Width = 800;
-	private static final int Game_Height = 600;
+	public static final int Game_Width = 800;
+	public static final int Game_Height = 600;
+	public static final float Background_VX = -5;
+	
 	private Background background;
 
 	public PigRunGame(String title) {
@@ -27,13 +29,13 @@ public class PigRunGame extends BasicGame {
 
 	@Override
 	public void init(GameContainer container) throws SlickException {
-		background = new Background(0,0);
+		background = new Background(-Game_Width/8,0,Background_VX);
 		
 	}
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		
+		background.update();
 	}
 	
 	public static void main(String[] args) {
