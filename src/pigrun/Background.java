@@ -11,6 +11,7 @@ public class Background {
 	  private float y;
 	  private float vx;
 	  
+	  
 	  static public final int WIDTH = 1400; 
 	  static public final int IMAGE_HEIGHT = 600;
 	 

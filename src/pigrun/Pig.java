@@ -4,9 +4,6 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
 
-
-
-
 public class Pig {
 
 	private Image pig;
@@ -15,7 +12,8 @@ public class Pig {
 	private float vjump;
 	private float vy;
 	private float Pig_HP;
-	private double ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
+	private float ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
+	//public static int checkjump = 0;
 	
 	public Pig(float x, float y, float vjump) throws SlickException {
 		this.x = x;
@@ -35,16 +33,17 @@ public class Pig {
 		    if(y == ground_height){
 		    	vy = 0;
 		    }
+		    
 	}
 	public void setVy(float vy) {
 	    this.vy = vy;
 	  }
 	public void jump() {
 		vy = vjump;
+		
 	  }
 	 public boolean isCollideGround() {
 		 	if(y == ground_height){
-		 		
 		 		return true;
 		 		}
 		 	return false;
