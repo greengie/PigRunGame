@@ -12,8 +12,9 @@ public class Pig {
 	private float vjump;
 	private float vy;
 	private float Pig_HP;
+	public static int check_jump;
 	private float ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
-	//public static int checkjump = 0;
+	
 	
 	public Pig(float x, float y, float vjump) throws SlickException {
 		this.x = x;
@@ -21,6 +22,7 @@ public class Pig {
 		this.vy = vjump;
 		this.vjump = vjump;
 		Pig_HP = 100;
+		check_jump = 0;
 		pig = new Image("res/pig.png");		
 	}
 
@@ -29,11 +31,11 @@ public class Pig {
 	}
 	public void update() {
 			y -= vy;
-		    vy += PigRunGame.G;
-		    if(y == ground_height){
-		    	vy = 0;
-		    }
-		    
+			vy += PigRunGame.G;
+			if(y >= ground_height){
+				vy = 0;
+				check_jump = 0;
+			}
 	}
 	public void setVy(float vy) {
 	    this.vy = vy;
@@ -43,7 +45,7 @@ public class Pig {
 		
 	  }
 	 public boolean isCollideGround() {
-		 	if(y == ground_height){
+		 	if(y >= ground_height){
 		 		return true;
 		 		}
 		 	return false;
