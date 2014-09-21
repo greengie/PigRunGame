@@ -18,7 +18,7 @@ public class PigRunGame extends BasicGame {
 	public static final float G = (float) -0.35;
 	public static final float Obstacle_VX = -4;
 	public static final int BottomObstacle_COUNT = 3;
-	public static final int MediumObstacle_COUNT = 2;
+	public static final int MediumObstacle_COUNT = 1;
 	
 	private boolean isStarted;
 	
@@ -27,6 +27,10 @@ public class PigRunGame extends BasicGame {
 	private Pig pig;
 	private BottomObstacle[] bottomObstacles;
 	private MediumObstacle[] mediumObstacles;
+	private TopObstacle topObstacle;
+	
+	private float time = 0;
+	public float timer = 0;
 	
 
 	public PigRunGame(String title) {
@@ -41,8 +45,10 @@ public class PigRunGame extends BasicGame {
 		for(BottomObstacle bottomobstacle : bottomObstacles){
 			bottomobstacle.render();
 		}
-		for(MediumObstacle mediumobstacle : mediumObstacles)
+		for(MediumObstacle mediumobstacle : mediumObstacles){
 		mediumobstacle.render();
+		}
+		topObstacle.render();
 	}
 
 	@Override
@@ -51,8 +57,13 @@ public class PigRunGame extends BasicGame {
 		pig = new Pig(Game_Width/5,Game_Height - Game_Height/2+65,Pig_Jump_Vy);
 		initBottomObstacle();
 		initMediumObstacle();
+		initTopObstacle();
 		isStarted = false;
 		
+	}
+
+	private void initTopObstacle() throws SlickException{
+		topObstacle = new TopObstacle(Game_Width/2, Game_Height/2, Obstacle_VX);
 	}
 
 	private void initMediumObstacle() throws SlickException {
@@ -77,8 +88,16 @@ public class PigRunGame extends BasicGame {
 			for(BottomObstacle bottomobstacle : bottomObstacles){
 				bottomobstacle.update();
 			}
-			for(MediumObstacle mediumobstacle : mediumObstacles)
+			for(MediumObstacle mediumobstacle : mediumObstacles){
 				mediumobstacle.update();
+			}
+			topObstacle.update();
+			}
+		time += delta;
+	
+		if(time >= 1000){
+			time  = 0;
+			timer++ ;
 			}
 		}
 	
