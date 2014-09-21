@@ -39,4 +39,9 @@ public class BottomObstacle {
 	public void updatemovement() {
 		  x += vx;
 	}
+	
+	public float getX() { 
+		return x; }
+	public float getY() { 
+		return y; }
 }

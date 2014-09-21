@@ -51,8 +51,10 @@ public class Pig {
 		 		return true;
 		 		}
 		 	return false;
-		 
-	  }
+	 }
+	 public boolean isCollideBottomObstacle(BottomObstacle b) {
+		    return CollisionDetector.isCollideBottomObstacle(x, y, b.getX(), b.getY());
+		  }
 
 	
 	

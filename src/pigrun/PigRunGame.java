@@ -108,14 +108,25 @@ public class PigRunGame extends BasicGame {
 			for(TopObstacle topobstacles : topObstacles){
 			topobstacles.update();}
 			}
-		time += delta;
-	
-		if(time >= 1000){
-			time  = 0;
-			timer++ ;
+			checkCollision();
+			
+			time += delta;
+			if(time >= 1000){
+				time  = 0;
+				timer++ ;
 			}
 		}
 	
+	private void checkCollision() {
+		boolean isCollide = false;
+		for(BottomObstacle bottomobstacle : bottomObstacles){
+		if(pig.isCollideBottomObstacle(bottomobstacle)){
+			isCollide = true;
+			System.out.println("Collision!");
+			}
+		}
+	}
+
 	@Override
 	  public void keyPressed(int key, char c) {
 		if(Pig.check_jump < 2){
