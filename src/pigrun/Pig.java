@@ -13,8 +13,9 @@ public class Pig {
 	private float vy;
 	private float Pig_HP;
 	public static int check_jump;
-	private float ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
+	public static float ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
 	public static final int WIDTH = 100;
+	public static final int HEIGHT = 100;
 	
 	
 	public Pig(float x, float y, float vjump) throws SlickException {
@@ -28,7 +29,7 @@ public class Pig {
 	}
 
 	public void render() {
-		pig.draw(x-WIDTH/2,y);
+		pig.draw(x-(WIDTH),y);
 	}
 	public void update() {
 			y -= vy;

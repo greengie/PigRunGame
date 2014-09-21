@@ -23,7 +23,7 @@ public class BottomObstacle {
 	}
 
 	  public void render() {
-		bottomObstacle.draw(x+WIDTH,y-IMAGE_HEIGHT/2+Error);
+		bottomObstacle.draw(x-WIDTH/2,y-IMAGE_HEIGHT/2+Error);
 	  }
 	  public void update() {
 		    updatemovement();  
@@ -31,8 +31,8 @@ public class BottomObstacle {
 		  }
 
 	 private void updateWrapAround() {
-		 if(x < -WIDTH/2){
-			 x = PigRunGame.Game_Width+WIDTH/2;
+		 if(x < - PigRunGame.Game_Width/2){
+			 x = PigRunGame.Game_Width+PigRunGame.Game_Width/4;
 		 }
 	}
 

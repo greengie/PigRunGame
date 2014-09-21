@@ -21,7 +21,7 @@ public class MediumObstacle {
 	}
 
 	public void render() {
-	mediumObstacle.draw(x,y-IMAGE_HEIGHT/2-Error);
+	mediumObstacle.draw(x-WIDTH,y-IMAGE_HEIGHT/2-Error);
 	}
 	public void update() {
 	    updatemovement();  
@@ -29,8 +29,8 @@ public class MediumObstacle {
 	  }
 
 	private void updateWrapAround() {
-	 if(x < -WIDTH/2){
-		 x = PigRunGame.Game_Width+WIDTH/2;
+	 if(x < -PigRunGame.Game_Width/2){
+		 x = PigRunGame.Game_Width+PigRunGame.Game_Width/4;
 	 }
 	}
 
