@@ -11,9 +11,9 @@ public class BottomObstacle {
 	  static public final int Error = 10;
 	  
 	  private Image bottomObstacle;
-	  private float x;
-	  private float y;
-	  private float vx;
+	  protected float x;
+	  protected float y;
+	  protected float vx;
 	  
 	  public BottomObstacle(float x, float y , float vx) throws SlickException {
 		this.x = x;
@@ -23,7 +23,7 @@ public class BottomObstacle {
 	}
 
 	  public void render() {
-		bottomObstacle.draw(x-WIDTH/2,y-IMAGE_HEIGHT/2+Error);
+		bottomObstacle.draw(x-WIDTH,y-IMAGE_HEIGHT/2+Error);
 	  }
 	  public void update() {
 		    updatemovement();  
@@ -32,7 +32,7 @@ public class BottomObstacle {
 
 	 private void updateWrapAround() {
 		 if(x < - PigRunGame.Game_Width/2){
-			 x = PigRunGame.Game_Width+PigRunGame.Game_Width/4;
+			 x = PigRunGame.Game_Width+PigRunGame.Game_Width/2;
 		 }
 	}
 

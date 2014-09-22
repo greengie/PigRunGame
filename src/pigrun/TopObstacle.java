@@ -36,7 +36,7 @@ public class TopObstacle {
 
 	public void updateWrapAround() {
 	 if(x < -PigRunGame.Game_Width/2){
-		 x = PigRunGame.Game_Width+PigRunGame.Game_Width/4;
+		 x = PigRunGame.Game_Width+PigRunGame.Game_Width/2;
 		 randomY();
 	 }
 	}
