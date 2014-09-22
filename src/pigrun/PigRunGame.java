@@ -82,6 +82,7 @@ public class PigRunGame extends BasicGame {
 			else{
 				bottomobstacle = new MediumObstacle(Game_Width/2 - 100 + 500*i, Game_Height - Game_Height/2+65, Obstacle_VX);
 			}
+			bottomobstacle.getnumber(i);
 			bottomObstacles[i] = bottomobstacle;
 		}
 	}
@@ -99,7 +100,7 @@ public class PigRunGame extends BasicGame {
 			topobstacles.update();}
 			}
 			checkCollision();
-			
+			updatePatternObstacle();
 			time += delta;
 			if(time >= 1000){
 				time  = 0;
@@ -107,12 +108,16 @@ public class PigRunGame extends BasicGame {
 			}
 		}
 	
+	private void updatePatternObstacle() {
+		
+	}
+
 	private void checkCollision() {
 		boolean isCollide = false;
 		for(BottomObstacle bottomobstacle : bottomObstacles){
 		if(pig.isCollideBottomObstacle(bottomobstacle)){
 			isCollide = true;
-			System.out.println("Collision!");
+			//System.out.println("Collision!");
 			}
 		}
 	}

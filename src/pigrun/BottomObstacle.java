@@ -5,6 +5,8 @@ import org.newdawn.slick.SlickException;
 
 
 
+
+
 public class BottomObstacle {
 	  public static final float WIDTH = 100;
 	  static public final int IMAGE_HEIGHT = 150;
@@ -14,6 +16,9 @@ public class BottomObstacle {
 	  protected float x;
 	  protected float y;
 	  protected float vx;
+	  
+	  protected int pattern = 0;
+	  protected int number;
 	  
 	  public BottomObstacle(float x, float y , float vx) throws SlickException {
 		this.x = x;
@@ -31,10 +36,18 @@ public class BottomObstacle {
 		  }
 
 	 private void updateWrapAround() {
-		 if(x < - PigRunGame.Game_Width/2){
+		 if(x < - PigRunGame.Game_Width/2 && pattern == 0 && number == 0 ){
 			 x = PigRunGame.Game_Width+PigRunGame.Game_Width/2;
 		 }
 	}
+	 
+	 public void getnumber(int i){
+		  number = i;
+		  System.out.println(number);
+	 }
+	 public void getsizepattern(){
+		 
+	 }
 
 	public void updatemovement() {
 		  x += vx;
