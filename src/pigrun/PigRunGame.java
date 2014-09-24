@@ -1,5 +1,7 @@
 package pigrun;
 
+import java.util.Random;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
@@ -28,6 +30,9 @@ public class PigRunGame extends BasicGame {
 	private BottomObstacle[] bottomObstacles;
 	private TopObstacle[] topObstacles;
 	
+	private int pattern = 0;
+	private int lastpattern = 0;
+	private Random random;
 	private float time = 0;
 	public float timer = 0;
 	
@@ -51,6 +56,7 @@ public class PigRunGame extends BasicGame {
 	public void init(GameContainer container) throws SlickException {
 		background = new Background(-Game_Width/8,0,Background_VX);
 		pig = new Pig(Game_Width/5,Game_Height - Game_Height/2+65,Pig_Jump_Vy);
+		random = new Random();
 		initBottomObstacle();
 		initTopObstacle();
 		isStarted = false;
@@ -76,12 +82,17 @@ public class PigRunGame extends BasicGame {
 		bottomObstacles = new BottomObstacle[BottomObstacle_COUNT];
 		BottomObstacle bottomobstacle ;
 		for(int i = 0; i < BottomObstacle_COUNT; i++){
+			if(i==0){
+				lastpattern = pattern;
+				pattern = 1;//random.nextInt(1);
+			}
 			if( i % 2 == 0){
 				bottomobstacle = new BottomObstacle(Game_Width/2 - 100 + 500*i, Game_Height - Game_Height/2+65, Obstacle_VX);
 			} 
 			else{
 				bottomobstacle = new MediumObstacle(Game_Width/2 - 100 + 500*i, Game_Height - Game_Height/2+65, Obstacle_VX);
 			}
+			bottomobstacle.getpattern(pattern, lastpattern);
 			bottomobstacle.getnumber(i);
 			bottomObstacles[i] = bottomobstacle;
 		}

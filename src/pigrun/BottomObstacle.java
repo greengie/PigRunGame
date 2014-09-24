@@ -1,5 +1,7 @@
 package pigrun;
 
+import java.util.Random;
+
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -17,15 +19,20 @@ public class BottomObstacle {
 	  protected float y;
 	  protected float vx;
 	  
+	  protected int lastpattern = 0;
 	  protected int pattern = 0;
+	  protected int[] patternWidth = new int[]{2500};
 	  protected int number;
-	  
+	 
 	  public BottomObstacle(float x, float y , float vx) throws SlickException {
 		this.x = x;
 		this.y = y;
 		this.vx = vx;
 		bottomObstacle = new Image("res/bottomobstacle.png");
+		
 	}
+	  
+	  
 
 	  public void render() {
 		bottomObstacle.draw(x-WIDTH,y-IMAGE_HEIGHT/2+Error);
@@ -36,17 +43,22 @@ public class BottomObstacle {
 		  }
 
 	 private void updateWrapAround() {
-		 if(x < - PigRunGame.Game_Width/2 && pattern == 0 && number == 0 ){
-			 x = PigRunGame.Game_Width+PigRunGame.Game_Width/2;
+		 if(x < -100){
+			 if(lastpattern == 0 && pattern == 1){
+				 if(number%2 == 0)
+				    x=2500;
+				 else
+					x=2100;
+			 }
 		 }
 	}
 	 
 	 public void getnumber(int i){
 		  number = i;
-		  System.out.println(number);
 	 }
-	 public void getsizepattern(){
-		 
+	 public void getpattern(int pattern,int lastpattern){
+		 this.pattern = pattern;
+		 this.lastpattern =lastpattern;
 	 }
 
 	public void updatemovement() {
