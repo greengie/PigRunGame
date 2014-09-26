@@ -17,6 +17,12 @@ public class TopObstacle {
 	static public final int WIDTH = 100;
 	static public final int IMAGE_HEIGHT = 700;
 	static public final int space = 150;
+	
+	protected int lastpattern = 0;
+	protected int pattern = 0;
+	protected int[] patternWidth = new int[]{2500};
+	protected int number;
+	public boolean zerocollide = false;
 
 	public TopObstacle(float x, float y, float vx) throws SlickException {
 		this.x = x;
@@ -35,10 +41,31 @@ public class TopObstacle {
 	  }
 
 	public void updateWrapAround() {
-	 if(x < -PigRunGame.Game_Width/2){
-		 x = PigRunGame.Game_Width+PigRunGame.Game_Width/2;
-		 randomY();
-	 }
+		 if(x < -100){
+			
+			 if(number == 0){
+				 zerocollide = true;
+			 }
+			 if(lastpattern == 0 && pattern == 0){
+				 x = 2000;
+			 }
+			 else if(lastpattern == 0 && pattern == 1){
+				 if(number%2 == 0)
+				    x = 2000;
+				 else
+					x = 1600;
+			 }
+			 else if(lastpattern == 1 && pattern == 0){
+				 if(number%2 == 0)
+				    x = 2000;
+				 else
+					x = 2400;
+			 }
+			 else if(lastpattern == 1 && pattern == 1){
+				x = 2000;
+			 }
+			 randomY();
+		}
 	}
 
 	public void updatemovement() {
@@ -47,7 +74,18 @@ public class TopObstacle {
 	
 	public void randomY() {
 	    y = 200 + random.nextInt(200);
-	  }
+	}
+	
+	public boolean getZeroCollideScreen(){
+		 return zerocollide;
+	 }
+	 public void getnumber(int i){
+		  number = i;
+	 }
+	 public void getpattern(int pattern,int lastpattern){
+		 this.pattern = pattern;
+		 this.lastpattern =lastpattern;
+	 }
 	
 	public float getX() { 
 		return x; }

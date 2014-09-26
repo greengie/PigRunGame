@@ -67,13 +67,15 @@ public class PigRunGame extends BasicGame {
 		TopObstacle topobstacle ;
 		for(int i = 0 ; i < TopObstacle_COUNT; i++){
 			if(i == 0){
-				topobstacle = new SlidingTopObstacleDownward(Game_Width/2 + 150 + 600*i, Game_Height/2, Obstacle_VX);
+				topobstacle = new SlidingTopObstacleDownward(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			} 
 			else if(i == TopObstacle_COUNT - 1){
-				topobstacle = new SlidingTopObstacleUpWard(Game_Width/2 + 150 + 600*i, Game_Height/12, Obstacle_VX);
+				topobstacle = new SlidingTopObstacleUpWard(Game_Width/2 + 150 + 500*i, Game_Height/12, Obstacle_VX);
 			}else{
-				topobstacle = new TopObstacle(Game_Width/2 + 100 + 500*i, Game_Height/2, Obstacle_VX);
+				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			}
+			topobstacle.getpattern(pattern, lastpattern);
+			topobstacle.getnumber(i);
 			topObstacles[i] = topobstacle;
 		}
 	}
@@ -82,8 +84,6 @@ public class PigRunGame extends BasicGame {
 		bottomObstacles = new BottomObstacle[BottomObstacle_COUNT];
 		BottomObstacle bottomobstacle ;
 		for(int i = 0; i < BottomObstacle_COUNT; i++){
-			if(i==0){
-			}
 			if( i % 2 == 0){
 				bottomobstacle = new BottomObstacle(Game_Width/2 - 100 + 500*i, Game_Height - Game_Height/2+65, Obstacle_VX);
 			} 
