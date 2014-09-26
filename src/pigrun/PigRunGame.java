@@ -83,8 +83,6 @@ public class PigRunGame extends BasicGame {
 		BottomObstacle bottomobstacle ;
 		for(int i = 0; i < BottomObstacle_COUNT; i++){
 			if(i==0){
-				lastpattern = pattern;
-				pattern = 1;//random.nextInt(1);
 			}
 			if( i % 2 == 0){
 				bottomobstacle = new BottomObstacle(Game_Width/2 - 100 + 500*i, Game_Height - Game_Height/2+65, Obstacle_VX);
@@ -120,7 +118,16 @@ public class PigRunGame extends BasicGame {
 		}
 	
 	private void updatePatternObstacle() {
-		
+		if(bottomObstacles[0].getZeroCollideScreen()){
+			lastpattern = pattern;
+			pattern = random.nextInt(2);
+			System.out.println(lastpattern + " " + pattern);
+			bottomObstacles[0].zerocollide = false;
+		}
+		for(int i = 0; i < BottomObstacle_COUNT; i++){
+			bottomObstacles[i].lastpattern = lastpattern;
+			bottomObstacles[i].pattern = pattern;
+		}
 	}
 
 	private void checkCollision() {

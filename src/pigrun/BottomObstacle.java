@@ -23,6 +23,7 @@ public class BottomObstacle {
 	  protected int pattern = 0;
 	  protected int[] patternWidth = new int[]{2500};
 	  protected int number;
+	  public boolean zerocollide = false;
 	 
 	  public BottomObstacle(float x, float y , float vx) throws SlickException {
 		this.x = x;
@@ -44,15 +45,34 @@ public class BottomObstacle {
 
 	 private void updateWrapAround() {
 		 if(x < -100){
-			 if(lastpattern == 0 && pattern == 1){
+			 System.out.println(number);
+			 if(number == 0){
+				 zerocollide = true;
+			 }
+			 if(lastpattern == 0 && pattern == 0){
+				 x = 2500;
+			 }
+			 else if(lastpattern == 0 && pattern == 1){
 				 if(number%2 == 0)
-				    x=2500;
+				    x = 2500;
 				 else
-					x=2100;
+					x = 2100;
+			 }
+			 else if(lastpattern == 1 && pattern == 0){
+				 if(number%2 == 0)
+				    x = 2500;
+				 else
+					x = 2900;
+			 }
+			 else if(lastpattern == 1 && pattern == 1){
+				x = 2500;
 			 }
 		 }
 	}
 	 
+	 public boolean getZeroCollideScreen(){
+		 return zerocollide;
+	 }
 	 public void getnumber(int i){
 		  number = i;
 	 }
