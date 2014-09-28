@@ -150,7 +150,7 @@ public class PigRunGame extends BasicGame {
 		for(TopObstacle topobstacle : topObstacles){
 			if(topobstacle.isCollideTopObstacle(pig)){
 				isCollideTopObstacle = true;
-				System.out.println("Collision!");
+				//System.out.println("Collision!");
 			}
 		}
 		return isCollideTopObstacle;

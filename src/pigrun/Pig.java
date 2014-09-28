@@ -25,7 +25,7 @@ public class Pig {
 		this.vjump = vjump;
 		Pig_HP = 10;
 		check_jump = 0;
-		pig = new Image("res/pig.png");		
+		pig = new Image("res/pig1.png");		
 	}
 
 	public void render() {
