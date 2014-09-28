@@ -62,7 +62,7 @@ public class BottomObstacle {
 				 if(number%2 == 0)
 				    x = 2500;
 				 else
-					x = 2500;
+					x = 2900;
 			 }
 			 else if(lastpattern == 1 && pattern == 1){
 				x = 2500;

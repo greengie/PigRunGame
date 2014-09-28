@@ -15,5 +15,34 @@ public class SlidingTopObstacleUpWard extends TopObstacle {
 		    y += 0.8 ;
 		    }
 		  }
-	
+	@Override
+		public void updateWrapAround() {
+			super.updateWrapAround();
+			if(x < -100){
+				
+				 if(number == 0){
+					 zerocollide = true;
+				 }
+				 if(lastpattern == 0 && pattern == 0){
+					 x = 1900;
+				 }
+				 else if(lastpattern == 0 && pattern == 1){
+					 if(number%2 == 0)
+					    x = 1900;
+					 else
+						x = 1500;
+				 }
+				 else if(lastpattern == 1 && pattern == 0){
+					 if(number%2 == 0)
+					    x = 1900;
+					 else
+						x = 2300;
+				 }
+				 else if(lastpattern == 1 && pattern == 1){
+					x = 1900;
+				 }
+				 
+			}
+		}
 }
+

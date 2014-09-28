@@ -34,8 +34,9 @@ public class Pig {
 	public void update() {
 			y -= vy;
 			vy += PigRunGame.G;
-			if(y >= ground_height){
+			if(y >= ground_height - 5){
 				vy = 0;
+				y = ground_height;
 				check_jump = 0;
 			}
 	}
