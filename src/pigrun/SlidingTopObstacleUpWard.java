@@ -44,5 +44,6 @@ public class SlidingTopObstacleUpWard extends TopObstacle {
 				 
 			}
 		}
+	
 }
 

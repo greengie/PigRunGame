@@ -7,7 +7,7 @@ import org.newdawn.slick.SlickException;
 
 public class TopObstacle {
 
-	private Image topObstacle;
+	protected Image topObstacle;
 	protected float x;
 	protected float y;
 	protected float vx;
@@ -86,7 +86,14 @@ public class TopObstacle {
 		 this.pattern = pattern;
 		 this.lastpattern =lastpattern;
 	 }
-
+	 
+	 public float getX() { 
+			return x; 
+			}
+	 
+	 public float getY() { 
+			return y; 
+			}
 	public boolean isCollideTopObstacle(Pig p) {
 	    return CollisionDetector.isCollideTopObstacle(x, y, p.getX(), p.getY());
 	  }

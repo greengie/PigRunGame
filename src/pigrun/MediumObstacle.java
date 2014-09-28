@@ -18,5 +18,6 @@ public class MediumObstacle extends BottomObstacle {
 	 public void render() {
 		mediumObstacle.draw(x-WIDTH,y-IMAGE_HEIGHT/2-Error);
 	  }
+	
 }
 	

@@ -12,11 +12,25 @@ public class CollisionDetector {
 		}
 		return false;
 	}
+	
+	static boolean isCollideMediumObstacle(float mediumX, float mediumY, float pigX,float pigY) {
+		if(Math.abs(pigX - mediumX) <= MediumObstacle.WIDTH/2 + 10)
+		{
+			if((pigY <= mediumY - MediumObstacle.IMAGE_HEIGHT + 8))
+			{
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+		return false;
+	}
 
 	static boolean isCollideTopObstacle(float topX, float topY, float pigX,float pigY) {
 		if(Math.abs(pigX - topX) <= BottomObstacle.WIDTH/2 + 15)
 		{
-			if((pigY >= topY - TopObstacle.IMAGE_HEIGHT/2 + 100))
+			if((pigY >= topY - 200))
 			{
 				return false;
 			}

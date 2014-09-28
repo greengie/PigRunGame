@@ -83,7 +83,17 @@ public class BottomObstacle {
 		  x += vx;
 	}
 	
+	public float getX() { 
+			return x; 
+			}
+	 
+	 public float getY() { 
+			return y; 
+			}
 	public boolean isCollideBottomObstacle(Pig p) {
 	    return CollisionDetector.isCollideBottomObstacle(x, y, p.getX(), p.getY());
+	  }
+	public boolean isCollideMediumObstacle(Pig p) {
+	    return CollisionDetector.isCollideMediumObstacle(x, y, p.getX(), p.getY());
 	  }
 }
