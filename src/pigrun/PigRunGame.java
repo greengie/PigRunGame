@@ -23,7 +23,8 @@ public class PigRunGame extends BasicGame {
 	public static final int TopObstacle_COUNT = 4;
 	
 	private boolean isStarted;
-	
+	private boolean isJumped;
+	private boolean isGameover;
 	
 	private Background background;
 	private Pig pig;
@@ -35,6 +36,7 @@ public class PigRunGame extends BasicGame {
 	private Random random;
 	private float time = 0;
 	public float timer = 0;
+	
 	
 	public PigRunGame(String title) {
 		super(title);
@@ -49,7 +51,8 @@ public class PigRunGame extends BasicGame {
 			bottomobstacle.render();
 		}
 		for(TopObstacle topobstacles : topObstacles){
-		topobstacles.render();}
+			topobstacles.render();
+		}
 	}
 
 	@Override
@@ -60,6 +63,8 @@ public class PigRunGame extends BasicGame {
 		initBottomObstacle();
 		initTopObstacle();
 		isStarted = false;
+		isJumped = false;
+		isGameover = false;
 		}
 
 	private void initTopObstacle() throws SlickException{
@@ -98,9 +103,11 @@ public class PigRunGame extends BasicGame {
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		if(isStarted == true){
+		if((isStarted == true)&& (!isGameover)){
 			background.update();
-			pig.update();
+				if(isJumped == true){
+					pig.update();
+				}
 			for(BottomObstacle bottomobstacle : bottomObstacles){
 				bottomobstacle.update();
 			}
@@ -108,8 +115,11 @@ public class PigRunGame extends BasicGame {
 			for(TopObstacle topobstacles : topObstacles){
 			topobstacles.update();}
 			}
-			checkCollision();
 			updatePatternObstacle();
+			if(checkCollisionBottomObstacle()){
+				isGameover = true;
+			}
+			checkCollisionBottomObstacle();
 			time += delta;
 			if(time >= 1000){
 				time  = 0;
@@ -130,25 +140,29 @@ public class PigRunGame extends BasicGame {
 		}
 	}
 
-	private void checkCollision() {
-		boolean isCollide = false;
+	private boolean checkCollisionBottomObstacle() {
+		boolean isCollideBottomObstacle = false;
 		for(BottomObstacle bottomobstacle : bottomObstacles){
-		if(pig.isCollideBottomObstacle(bottomobstacle)){
-			isCollide = true;
-			//System.out.println("Collision!");
+			if(bottomobstacle.isCollideBottomObstacle(pig)){
+				isCollideBottomObstacle = true;
+				System.out.println("Collision!");
 			}
 		}
+		return isCollideBottomObstacle;
 	}
 
 	@Override
 	  public void keyPressed(int key, char c) {
 		if(Pig.check_jump < 2){
 			if (key == Input.KEY_SPACE) {
+				isJumped = true;
 				pig.jump();
-				isStarted = true;
 				Pig.check_jump ++ ;
+				}
 			}
-		}
+			if (key == Input.KEY_ENTER) {
+				isStarted = true;
+			}
 	}
 	
 	public static void main(String[] args) {

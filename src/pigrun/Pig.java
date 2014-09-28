@@ -23,7 +23,7 @@ public class Pig {
 		this.y = y;
 		this.vy = vjump;
 		this.vjump = vjump;
-		Pig_HP = 5;
+		Pig_HP = 10;
 		check_jump = 0;
 		pig = new Image("res/pig.png");		
 	}
@@ -53,9 +53,18 @@ public class Pig {
 		 		}
 		 	return false;
 	 }
-	 public boolean isCollideBottomObstacle(BottomObstacle b) {
-		    return CollisionDetector.isCollideBottomObstacle(x, y, b.getX(), b.getY());
-		  }
+	 
+	 public float getX() { 
+			return x; 
+			}
+	 
+	 public float getY() { 
+			return y; 
+			}
+	 
+	 public float getHp() { 
+			return Pig_HP; 
+			}
 
 	
 	

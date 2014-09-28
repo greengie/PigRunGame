@@ -33,8 +33,6 @@ public class BottomObstacle {
 		
 	}
 	  
-	  
-
 	  public void render() {
 		bottomObstacle.draw(x-WIDTH,y-IMAGE_HEIGHT/2+Error);
 	  }
@@ -85,8 +83,7 @@ public class BottomObstacle {
 		  x += vx;
 	}
 	
-	public float getX() { 
-		return x; }
-	public float getY() { 
-		return y; }
+	public boolean isCollideBottomObstacle(Pig p) {
+	    return CollisionDetector.isCollideBottomObstacle(x, y, p.getX(), p.getY());
+	  }
 }
