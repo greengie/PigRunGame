@@ -11,7 +11,7 @@ public class Pig {
 	float y;
 	private float vjump;
 	private float vy;
-	private float Pig_HP;
+	public float Pig_HP;
 	public static int check_jump;
 	public static float ground_height = PigRunGame.Game_Height - PigRunGame.Game_Height/2 + 65;
 	public static final int WIDTH = 100;

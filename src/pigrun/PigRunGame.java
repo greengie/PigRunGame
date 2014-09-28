@@ -46,13 +46,13 @@ public class PigRunGame extends BasicGame {
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		background.render();
-		pig.render();
 		for(BottomObstacle bottomobstacle : bottomObstacles){
 			bottomobstacle.render();
 		}
 		for(TopObstacle topobstacles : topObstacles){
 			topobstacles.render();
 		}
+		pig.render();
 	}
 
 	@Override
@@ -116,10 +116,11 @@ public class PigRunGame extends BasicGame {
 			topobstacles.update();}
 			}
 			updatePatternObstacle();
-			if(checkCollisionBottomObstacle()){
+			if(checkCollisionBottomObstacle() || checkCollisionTopObstacle()){
 				isGameover = true;
 			}
 			checkCollisionBottomObstacle();
+			checkCollisionTopObstacle();
 			time += delta;
 			if(time >= 1000){
 				time  = 0;
@@ -131,7 +132,7 @@ public class PigRunGame extends BasicGame {
 		if(bottomObstacles[0].getZeroCollideScreen()){
 			lastpattern = pattern;
 			pattern = random.nextInt(2);
-			System.out.println(lastpattern + " " + pattern);
+			//System.out.println(lastpattern + " " + pattern);
 			bottomObstacles[0].zerocollide = false;
 		}
 		for(int i = 0; i < BottomObstacle_COUNT; i++){
@@ -139,7 +140,18 @@ public class PigRunGame extends BasicGame {
 			bottomObstacles[i].pattern = pattern;
 		}
 	}
-
+	
+	private boolean checkCollisionTopObstacle() {
+		boolean isCollideTopObstacle = false;
+		for(TopObstacle topobstacle : topObstacles){
+			if(topobstacle.isCollideTopObstacle(pig)){
+				isCollideTopObstacle = true;
+				System.out.println("Collision!");
+			}
+		}
+		return isCollideTopObstacle;
+	}
+	
 	private boolean checkCollisionBottomObstacle() {
 		boolean isCollideBottomObstacle = false;
 		for(BottomObstacle bottomobstacle : bottomObstacles){
