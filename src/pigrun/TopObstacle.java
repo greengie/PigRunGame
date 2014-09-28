@@ -93,6 +93,7 @@ public class TopObstacle {
 	 
 	 public float getY() { 
 			return y; 
+			
 			}
 	public boolean isCollideTopObstacle(Pig p) {
 	    return CollisionDetector.isCollideTopObstacle(x, y, p.getX(), p.getY());
