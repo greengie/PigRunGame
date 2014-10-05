@@ -37,10 +37,10 @@ public class TopObstacle {
 	}
 	
 	public void update() {
-		System.out.println(getY());
+		//System.out.println(getY());
 		updatemovement();  
 	    updateWrapAround();
-	    getY();
+	    
 	  }
 
 	public void updateWrapAround() {
@@ -105,13 +105,13 @@ public class TopObstacle {
 			return x;
 			}
 	 
-	 public float getY() { 
+	 public float getnewY() { 
 			y = PigRunGame.Game_Height - y - space ;
 		 	return y;
 			}
 	 
 	public boolean isCollideTopObstacle(Pig p) {
-	    return CollisionDetector.isCollideTopObstacle(x, getY(), p.getX(), p.getY());
+	    return CollisionDetector.isCollideTopObstacle(x, getnewY(), p.getX(), p.getY());
 	  }
 
 }
