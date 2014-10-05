@@ -75,10 +75,10 @@ public class PigRunGame extends BasicGame {
 		TopObstacle topobstacle ;
 		for(int i = 0 ; i < TopObstacle_COUNT; i++){
 			if(i == 0){
-				topobstacle = new SlidingTopObstacleDownward(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
+				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			} 
 			else if(i == TopObstacle_COUNT - 1){
-				topobstacle = new SlidingTopObstacleUpWard(Game_Width/2 + 150 + 500*i, Game_Height/12, Obstacle_VX);
+				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			}else{
 				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			}
@@ -116,12 +116,15 @@ public class PigRunGame extends BasicGame {
 			}
 			
 			for(TopObstacle topobstacles : topObstacles){
-			topobstacles.update();}
+				topobstacles.update();}
 			}
+			
 			updatePatternObstacle();
+			
 			if(checkCollisionBottomObstacle() || checkCollisionTopObstacle() ){
 				isGameover = true;
 			}
+			
 			checkCollisionBottomObstacle();
 			checkCollisionTopObstacle();
 		
@@ -147,8 +150,8 @@ public class PigRunGame extends BasicGame {
 	
 	private boolean checkCollisionTopObstacle() {
 		boolean isCollideTopObstacle = false;
-		for(TopObstacle topobstacle : topObstacles){
-			if(topobstacle.isCollideTopObstacle(pig)){
+		for(int i = 0; i < TopObstacle_COUNT; i++){
+			if(topObstacles[i].isCollideTopObstacle(pig)){
 				isCollideTopObstacle = true;
 				//System.out.println("Collision!");
 			}

@@ -12,17 +12,18 @@ public class TopObstacle {
 	protected float y;
 	protected float vx;
 	
+	
 	Random random = new Random();
 	
 	static public final int WIDTH = 100;
 	static public final int IMAGE_HEIGHT = 700;
-	static public final int space = 150;
+	static public final int space = 100;
 	
 	protected int lastpattern = 0;
 	protected int pattern = 0;
 	protected int[] patternWidth = new int[]{2500};
 	protected int number;
-	public boolean zerocollide = false;
+	protected boolean zerocollide = false;
 
 	public TopObstacle(float x, float y, float vx) throws SlickException {
 		this.x = x;
@@ -32,48 +33,60 @@ public class TopObstacle {
 	}
 
 	public void render() {
-		topObstacle.draw(x - WIDTH,PigRunGame.Game_Height - (y + IMAGE_HEIGHT + space));
+		topObstacle.draw(x - WIDTH,PigRunGame.Game_Height - (y + IMAGE_HEIGHT + space ));
 	}
 	
 	public void update() {
-	    updatemovement();  
+		System.out.println(getY());
+		updatemovement();  
 	    updateWrapAround();
+	    getY();
 	  }
 
 	public void updateWrapAround() {
 		 if(x < -100){
 			
-			 if(number == 0){
+			if(number == 0){
 				 zerocollide = true;
 			 }
 			 if(lastpattern == 0 && pattern == 0){
 				 x = 2000;
+				
 			 }
 			 else if(lastpattern == 0 && pattern == 1){
-				 if(number%2 == 0)
+				 if(number%2 == 0){
 				    x = 2000;
-				 else
+				   
+				    }
+				 else{
 					x = 1600;
+					
+					}
 			 }
 			 else if(lastpattern == 1 && pattern == 0){
-				 if(number%2 == 0)
+				 if(number%2 == 0){
 				    x = 2000;
-				 else
+				   
+				 }
+				 else{
 					x = 2400;
+					
+				 }
 			 }
 			 else if(lastpattern == 1 && pattern == 1){
-				x = 2000;
-			 }
+				 	x = 2000;
+				 	
+			 }	
 			 randomY();
 		}
 	}
 
 	public void updatemovement() {
 	  x += vx;
-	}
+	 }
 	
 	public void randomY() {
-	    y = 200 + random.nextInt(200);
+	    y = 200 + random.nextInt(100);
 	}
 	
 	public boolean getZeroCollideScreen(){
@@ -87,16 +100,18 @@ public class TopObstacle {
 		 this.lastpattern =lastpattern;
 	 }
 	 
+	
 	 public float getX() { 
-			return x; 
+			return x;
 			}
 	 
 	 public float getY() { 
-			return y; 
-			
+			y = PigRunGame.Game_Height - y - space ;
+		 	return y;
 			}
+	 
 	public boolean isCollideTopObstacle(Pig p) {
-	    return CollisionDetector.isCollideTopObstacle(x, y, p.getX(), p.getY());
+	    return CollisionDetector.isCollideTopObstacle(x, getY(), p.getX(), p.getY());
 	  }
 
 }

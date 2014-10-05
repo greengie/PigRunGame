@@ -28,9 +28,9 @@ public class CollisionDetector {
 	}
 
 	static boolean isCollideTopObstacle(float topX, float topY, float pigX,float pigY) {
-		if(Math.abs(pigX - topX) <= TopObstacle.WIDTH/2 + 5)
+		if(Math.abs(pigX - topX) <= TopObstacle.WIDTH/2)
 		{
-			if((pigY >= topY - TopObstacle.IMAGE_HEIGHT/5 + 5))
+			if((pigY >= topY))
 			{
 				return false;
 			}

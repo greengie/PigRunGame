@@ -1,12 +1,7 @@
 package pigrun;
 
-import java.util.Random;
-
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
-
-
-
 
 
 public class BottomObstacle {
@@ -43,7 +38,7 @@ public class BottomObstacle {
 
 	 private void updateWrapAround() {
 		 if(x < -100){
-			 System.out.println(number);
+			 //System.out.println(number);
 			 if(number == 0){
 				 zerocollide = true;
 			 }
