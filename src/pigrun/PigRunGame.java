@@ -27,9 +27,10 @@ public class PigRunGame extends BasicGame {
 	public static final int BottomObstacle_COUNT = 5;
 	public static final int TopObstacle_COUNT = 4;
 	
-	private boolean isStarted;
-	private boolean isJumped;
-	private boolean isGameover;
+	public static int score ;
+	public boolean isStarted;
+	public boolean isJumped;
+	public boolean isGameover;
 	
 	private Background background;
 	private Pig pig;
@@ -56,6 +57,8 @@ public class PigRunGame extends BasicGame {
 			topobstacles.render();
 		}
 		pig.render();
+		
+		g.drawString("Score " + score, 400, 0);
 	}
 
 	@Override
@@ -75,10 +78,10 @@ public class PigRunGame extends BasicGame {
 		TopObstacle topobstacle ;
 		for(int i = 0 ; i < TopObstacle_COUNT; i++){
 			if(i == 0){
-				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
+				topobstacle = new SlidingTopObstacleUpWard(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			} 
 			else if(i == TopObstacle_COUNT - 1){
-				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
+				topobstacle = new SlidingTopObstacleDownward(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			}else{
 				topobstacle = new TopObstacle(Game_Width/2 + 150 + 500*i, Game_Height/2, Obstacle_VX);
 			}
@@ -113,10 +116,12 @@ public class PigRunGame extends BasicGame {
 				}
 			for(BottomObstacle bottomobstacle : bottomObstacles){
 				bottomobstacle.update();
-			}
+				}
 			
 			for(TopObstacle topobstacles : topObstacles){
-				topobstacles.update();}
+				topobstacles.update();
+				}
+					
 			}
 			
 			updatePatternObstacle();
@@ -129,10 +134,12 @@ public class PigRunGame extends BasicGame {
 			checkCollisionTopObstacle();
 		
 			time += delta;
-			if(time >= 1000){
+			if(time >= 1000 && (!isGameover)&& (isStarted == true)){
 				time  = 0;
 				timer++ ;
-			}
+				}
+			System.out.println(timer);
+			score = (int) (timer*1000);
 		}
 	
 	private void updatePatternObstacle() {
@@ -146,6 +153,18 @@ public class PigRunGame extends BasicGame {
 			bottomObstacles[i].lastpattern = lastpattern;
 			bottomObstacles[i].pattern = pattern;
 		}
+		
+		if(topObstacles[0].getZeroCollideScreen()){
+			lastpattern = pattern;
+			pattern = random.nextInt(2);
+			//System.out.println(lastpattern + " " + pattern);
+			topObstacles[0].zerocollide = false;
+		}
+		for(int i = 0; i < TopObstacle_COUNT; i++){
+			topObstacles[i].lastpattern = lastpattern;
+			topObstacles[i].pattern = pattern;
+		}
+		
 	}
 	
 	private boolean checkCollisionTopObstacle() {
@@ -188,6 +207,7 @@ public class PigRunGame extends BasicGame {
 			}
 			if (key == Input.KEY_ENTER) {
 				isStarted = true;
+				
 			}
 	}
 	
