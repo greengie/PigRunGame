@@ -58,7 +58,8 @@ public class PigRunGame extends BasicGame {
 		}
 		pig.render();
 		
-		g.drawString("Score " + score, 400, 0);
+		g.drawString("Score " + score, 1000, 0);
+		g.drawString("HP " + pig.Pig_HP, 400, 0);
 	}
 
 	@Override
@@ -110,7 +111,7 @@ public class PigRunGame extends BasicGame {
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
 		if((isStarted == true)&& (!isGameover)){
-			background.update();
+				background.update();
 				if(isJumped == true){
 					pig.update();
 				}
@@ -126,22 +127,30 @@ public class PigRunGame extends BasicGame {
 			
 			updatePatternObstacle();
 			
-			if(checkCollisionBottomObstacle() || checkCollisionTopObstacle() ){
+			if(checkCollisionBottomObstacle() || checkCollisionTopObstacle() && (pig.Pig_HP > 0) ){
+				pig.Pig_HP--;
+			}
+			if(pig.Pig_HP == 0){
 				isGameover = true;
 			}
 			
 			checkCollisionBottomObstacle();
 			checkCollisionTopObstacle();
-		
 			time += delta;
-			if(time >= 1000 && (!isGameover)&& (isStarted == true)){
-				time  = 0;
-				timer++ ;
-				}
-			System.out.println(timer);
-			score = (int) (timer*1000);
+			updateScore();
+			
 		}
 	
+	private void updateScore() {
+		
+		if(time >= 1000 && (!isGameover)&& (isStarted == true)){
+			time = 0;
+			timer++ ;
+			}
+		System.out.println(timer);
+		score = (int) (timer*1000);
+	}
+
 	private void updatePatternObstacle() {
 		if(bottomObstacles[0].getZeroCollideScreen()){
 			lastpattern = pattern;
