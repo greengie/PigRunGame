@@ -23,7 +23,7 @@ public class Pig {
 		this.y = y;
 		this.vy = vjump;
 		this.vjump = vjump;
-		Pig_HP = 500;
+		Pig_HP = 150;
 		check_jump = 0;
 		pig = new Image("res/pig1.png");		
 	}

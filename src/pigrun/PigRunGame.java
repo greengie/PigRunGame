@@ -31,6 +31,7 @@ public class PigRunGame extends BasicGame {
 	public boolean isStarted;
 	public boolean isJumped;
 	public boolean isGameover;
+	public boolean isGamePause;
 	
 	private Background background;
 	private Pig pig;
@@ -44,9 +45,6 @@ public class PigRunGame extends BasicGame {
 	public float timer = 0;
 	
 	
-	
-
-
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
 		background.render();
@@ -110,36 +108,38 @@ public class PigRunGame extends BasicGame {
 
 	@Override
 	public void update(GameContainer container, int delta) throws SlickException {
-		if((isStarted == true)&& (!isGameover)){
+		if((isStarted == true)&& (!isGameover)&&(isGamePause != true)){
 				background.update();
 				if(isJumped == true){
 					pig.update();
 				}
-			for(BottomObstacle bottomobstacle : bottomObstacles){
+				for(BottomObstacle bottomobstacle : bottomObstacles){
 				bottomobstacle.update();
 				}
 			
-			for(TopObstacle topobstacles : topObstacles){
+				for(TopObstacle topobstacles : topObstacles){
 				topobstacles.update();
 				}
 					
-			}
-			
 			updatePatternObstacle();
+			checkCollisionBottomObstacle();
+			checkCollisionTopObstacle();
 			
-			if(checkCollisionBottomObstacle() || checkCollisionTopObstacle() && (pig.Pig_HP > 0) ){
+			if(checkCollisionBottomObstacle() &&(pig.Pig_HP > 0) ){
+				pig.Pig_HP--;
+				
+			}
+			if(checkCollisionTopObstacle() && (pig.Pig_HP > 0)){
 				pig.Pig_HP--;
 			}
 			if(pig.Pig_HP == 0){
 				isGameover = true;
 			}
 			
-			checkCollisionBottomObstacle();
-			checkCollisionTopObstacle();
 			time += delta;
 			updateScore();
-			
 		}
+	}
 	
 	private void updateScore() {
 		
@@ -214,10 +214,15 @@ public class PigRunGame extends BasicGame {
 				Pig.check_jump ++ ;
 				}
 			}
-			if (key == Input.KEY_ENTER) {
+		if (key == Input.KEY_A) {
 				isStarted = true;
-				
 			}
+		if(key == Input.KEY_ESCAPE){
+			isGamePause = true;
+		}
+		if(key == Input.KEY_ENTER){
+			isGamePause = false;
+		}
 	}
 	
 	public static void main(String[] args) {

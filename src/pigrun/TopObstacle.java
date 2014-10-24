@@ -21,7 +21,7 @@ public class TopObstacle {
 	
 	protected int lastpattern = 0;
 	protected int pattern = 0;
-	protected int[] patternWidth = new int[]{2500};
+	protected int[] patternWidth = new int[]{4000};
 	protected int number;
 	protected boolean zerocollide = false;
 
