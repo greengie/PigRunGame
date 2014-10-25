@@ -22,7 +22,7 @@ public class TopObstacle {
 	
 	protected int lastpattern = 0;
 	protected int pattern = 0;
-	protected int[] patternWidth = new int[]{4000};
+	protected int[] patternWidth = new int[]{2500};
 	protected int number;
 	protected boolean zerocollide = false;
 
@@ -50,31 +50,23 @@ public class TopObstacle {
 				 zerocollide = true;
 			 }
 			 if(lastpattern == 0 && pattern == 0){
-				 x = 3000;
+				 x = 2500;
 				
 			 }
 			 else if(lastpattern == 0 && pattern == 1){
-				 if(number%2 == 0){
-				    x = 3000;
-				   
-				    }
-				 else{
-					x = 2000;
-					
-					}
+				 if(number%2 == 0)
+					    x = 2500;
+					 else
+						x = 2100;
 			 }
 			 else if(lastpattern == 1 && pattern == 0){
-				 if(number%2 == 0){
-				    x = 3000;
-				   
-				 }
-				 else{
-					x = 4000;
-					
-				 }
+				 if(number%2 == 0)
+					    x = 2500;
+					 else
+						x = 2900;
 			 }
 			 else if(lastpattern == 1 && pattern == 1){
-				 	x = 3000;
+				 	x = 2500;
 				 	
 			 }	
 			 randomY();
@@ -86,7 +78,7 @@ public class TopObstacle {
 	 }
 	
 	protected void randomY() {
-	    y1 = 200 + random.nextInt(100);
+	    y1 = 300 + random.nextInt(100);
 	}
 	
 	public boolean getZeroCollideScreen(){
