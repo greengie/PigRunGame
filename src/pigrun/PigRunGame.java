@@ -20,7 +20,7 @@ public class PigRunGame extends BasicGame {
 
 	public static final int Game_Width = 1200;
 	public static final int Game_Height = 600;
-	public static final float Background_VX = -5;
+	public static final float Background_VX = -3;
 	public static final float Pig_Jump_Vy = 13;
 	public static final float G = (float) -0.4;
 	public static final float Obstacle_VX = -5;
@@ -147,7 +147,7 @@ public class PigRunGame extends BasicGame {
 			time = 0;
 			timer++ ;
 			}
-		System.out.println(timer);
+		//System.out.println(timer);
 		score = (int) (timer*1000);
 	}
 
@@ -155,7 +155,7 @@ public class PigRunGame extends BasicGame {
 		if(bottomObstacles[0].getZeroCollideScreen()){
 			lastpattern = pattern;
 			pattern = random.nextInt(2);
-			//System.out.println(lastpattern + " " + pattern);
+			System.out.println(lastpattern + " " + pattern);
 			bottomObstacles[0].zerocollide = false;
 		}
 		for(int i = 0; i < BottomObstacle_COUNT; i++){
@@ -166,7 +166,7 @@ public class PigRunGame extends BasicGame {
 		if(topObstacles[0].getZeroCollideScreen()){
 			lastpattern = pattern;
 			pattern = random.nextInt(2);
-			//System.out.println(lastpattern + " " + pattern);
+			System.out.println(lastpattern + " " + pattern);
 			topObstacles[0].zerocollide = false;
 		}
 		for(int i = 0; i < TopObstacle_COUNT; i++){

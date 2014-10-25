@@ -5,16 +5,16 @@ import org.newdawn.slick.SlickException;
 public class SlidingTopObstacleDownward extends TopObstacle {
 
 	
-	public SlidingTopObstacleDownward(float x, float y, float vx)throws SlickException {
-		super(x, y, vx);
+	public SlidingTopObstacleDownward(float x, float y1, float vx)throws SlickException {
+		super(x, y1, vx);
 		
 	}
 	
 	@Override
 	 public void updatemovement() {
 		    super.updatemovement();
-			if(y >= Pig.ground_height - 200){	
-					y -= 0.4 ;
+			if(y1 >= Pig.ground_height - 200){	
+					y1 -= 0.4 ;
 		    	}
 	}	
 }
