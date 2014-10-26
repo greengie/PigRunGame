@@ -13,8 +13,11 @@ public class SlidingTopObstacleDownward extends TopObstacle {
 	@Override
 	 public void updatemovement() {
 		    super.updatemovement();
-			if(y1 >= Pig.ground_height - 120){	
+			if(y1 >= Pig.ground_height - 110){	
 					y1 -= 0.2 ;
 		    	}
-	}	
+			
+		}
+	 
+	
 }

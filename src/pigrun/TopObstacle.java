@@ -51,34 +51,40 @@ public class TopObstacle {
 			 }
 			 if(lastpattern == 0 && pattern == 0){
 				 x = 2500;
-				
+				 
 			 }
 			 else if(lastpattern == 0 && pattern == 1){
 				 if(number%2 == 0)
 					    x = 2500;
 					 else
 						x = 2100;
+				 
 			 }
 			 else if(lastpattern == 1 && pattern == 0){
 				 if(number%2 == 0)
 					    x = 2500;
 					 else
 						x = 2900;
+				 
 			 }
 			 else if(lastpattern == 1 && pattern == 1){
 				 	x = 2500;
 				 	
 			 }	
-			 randomY();
+			 randomY(); 
 		}
 	}
 
 	public void updatemovement() {
 	  x += vx;
+	  
 	 }
 	
-	protected void randomY() {
+	protected void randomY1() {
 	    y1 = 300 + random.nextInt(100);
+	}
+	protected void randomY(){
+		y1 = 420 + random.nextInt(100);
 	}
 	
 	public boolean getZeroCollideScreen(){
