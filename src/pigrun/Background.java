@@ -9,13 +9,13 @@ public class Background {
 	  private Image background;
 	  private float x;
 	  private float y;
-	  private float vx;
+	  private double vx;
 	  
 	  
 	  static public final int WIDTH = 1400; 
 	  static public final int IMAGE_HEIGHT = 600;
 	 
-	public Background(float x, float y, float vx) throws SlickException {
+	public Background(float x, float y, double vx) throws SlickException {
 		this.x = x;
 		this.y = y;
 		this.vx = vx;

@@ -10,7 +10,7 @@ public class MediumObstacle extends BottomObstacle {
 	
 	protected Image mediumObstacle;
 
-	public MediumObstacle(float x, float y, float vx) throws SlickException {
+	public MediumObstacle(float x, float y, double vx) throws SlickException {
 		super(x, y, vx);
 		mediumObstacle = new Image("res/mediumobstacles.png");
 	}

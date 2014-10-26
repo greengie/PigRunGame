@@ -9,10 +9,11 @@ public class BottomObstacle {
 	  static public final int IMAGE_HEIGHT = 150;
 	  static public final int Error = 10;
 	  
+	  
 	  private Image bottomObstacle;
 	  protected float x;
 	  protected float y;
-	  protected float vx;
+	  protected double vx;
 	  
 	  protected int lastpattern = 0;
 	  protected int pattern = 0;
@@ -20,7 +21,7 @@ public class BottomObstacle {
 	  protected int number;
 	  public boolean zerocollide = false;
 	 
-	  public BottomObstacle(float x, float y , float vx) throws SlickException {
+	  public BottomObstacle(float x, float y , double vx) throws SlickException {
 		this.x = x;
 		this.y = y;
 		this.vx = vx;
@@ -76,6 +77,7 @@ public class BottomObstacle {
 
 	public void updatemovement() {
 		  x += vx;
+		 
 	}
 	
 	public float getX() { 

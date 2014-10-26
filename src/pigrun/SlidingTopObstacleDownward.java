@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 public class SlidingTopObstacleDownward extends TopObstacle {
 
 	
-	public SlidingTopObstacleDownward(float x, float y1, float vx)throws SlickException {
+	public SlidingTopObstacleDownward(float x, float y1, double vx)throws SlickException {
 		super(x, y1, vx);
 		
 	}

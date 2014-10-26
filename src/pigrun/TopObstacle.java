@@ -11,7 +11,7 @@ public class TopObstacle {
 	protected float x;
 	protected float y1;
 	protected float y;
-	protected float vx;
+	protected double vx;
 	
 	
 	Random random = new Random();
@@ -20,13 +20,14 @@ public class TopObstacle {
 	static public final int IMAGE_HEIGHT = 700;
 	static public final int space = 100;
 	
+	
 	protected int lastpattern = 0;
 	protected int pattern = 0;
 	protected int[] patternWidth = new int[]{2500};
 	protected int number;
 	protected boolean zerocollide = false;
 
-	public TopObstacle(float x, float y, float vx) throws SlickException {
+	public TopObstacle(float x, float y, double vx) throws SlickException {
 		this.x = x;
 		this.y1 = y;
 		this.vx = vx;
@@ -77,7 +78,7 @@ public class TopObstacle {
 
 	public void updatemovement() {
 	  x += vx;
-	  
+	
 	 }
 	
 	protected void randomY1() {
