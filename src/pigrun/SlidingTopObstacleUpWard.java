@@ -14,7 +14,7 @@ public class SlidingTopObstacleUpWard extends TopObstacle {
 	 public void updatemovement() {
 		    super.updatemovement();
 		    if( y1 <= Pig.ground_height + 50){
-		    	y1 += 0.4 ;
+		    	y1 += 0.2 ;
 		    }
 	}
 	

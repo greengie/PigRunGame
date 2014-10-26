@@ -7,7 +7,9 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 
 
 
@@ -44,6 +46,9 @@ public class PigRunGame extends BasicGame {
 	private float time = 0;
 	public float timer = 0;
 	
+	private Music music;
+	private Sound sound;
+	private Sound sound1;
 	
 	@Override
 	public void render(GameContainer container, Graphics g) throws SlickException {
@@ -70,7 +75,16 @@ public class PigRunGame extends BasicGame {
 		isStarted = false;
 		isJumped = false;
 		isGameover = false;
+		initMusicAndSound();
 		}
+
+	private void initMusicAndSound() throws SlickException {
+		music = new Music("res/theme-song.ogg");
+		music.setVolume(0.4f);
+		music.loop();
+		sound = new Sound("res/jumping.wav");
+		sound1 = new Sound("res/box-impact.ogg");
+	}
 
 	private void initTopObstacle() throws SlickException{
 		topObstacles = new TopObstacle[TopObstacle_COUNT];
@@ -128,10 +142,11 @@ public class PigRunGame extends BasicGame {
 			
 			if(checkCollisionBottomObstacle() &&(pig.Pig_HP > 0) ){
 				pig.Pig_HP--;
-				
+				sound1.play();
 			}
 			if(checkCollisionTopObstacle() && (pig.Pig_HP > 0)){
 				pig.Pig_HP--;
+				sound1.play();
 			}
 			if(pig.Pig_HP == 0){
 				isGameover = true;
@@ -213,6 +228,7 @@ public class PigRunGame extends BasicGame {
 				isJumped = true;
 				pig.jump();
 				Pig.check_jump ++ ;
+				sound.play();
 				}
 			}
 		if (key == Input.KEY_A) {
